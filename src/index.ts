@@ -11,6 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/__gtg', routes.gtgRouter)
+app.use('/persons', routes.personRoute)
 
 app.get('/api/version', (req: Request, resp: Response) => {
     const jsonResponse = {
