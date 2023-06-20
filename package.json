@@ -2,11 +2,11 @@
     "name": "typescript-starter",
     "version": "1.0.0",
     "description": "Node.js + Typescript starter",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "start:dev": "nodemon --exec npm run restart",
         "build": "rimraf ./build && tsc",
-        "start": "npm run build && node build/index.js",
+        "start": "npm run build && node build/app.js",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
         "format:check": "prettier --check ./src",
