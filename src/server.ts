@@ -1,7 +1,9 @@
 import express, { Express } from 'express'
 import cors from 'cors'
 import * as routes from './routes'
-import simpleMiddleware from './middlewares/simpleMiddleware'
+import morganMiddleware from './middlewares/morganMiddleware'
+import logger from './logging/logger'
+import errorHandler from './middlewares/errorMiddleware'
 
 class Server {
     private app: Express
@@ -15,7 +17,12 @@ class Server {
         this.app.use(cors())
         this.app.use(express.json())
         this.app.use(express.urlencoded({ extended: true }))
-        this.app.use(simpleMiddleware)
+        this.app.use(morganMiddleware.config)
+    }
+
+    errorHandler() {
+        this.app.use(errorHandler)
+        return this
     }
 
     routes(): Server {
@@ -25,7 +32,7 @@ class Server {
 
     start(port: string) {
         this.app.listen(port, () => {
-            console.log(
+            logger.info(
                 `[server]: Server is listening at http://localhost:${port}`
             )
         })
