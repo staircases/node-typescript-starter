@@ -20,6 +20,14 @@ class DepartmentService {
         const dept: Department | null = await db.Department.findByPk(id)
         return dept
     }
+
+    save = async (object: any) => {
+        if (!object && Object.keys(object).length == 0) {
+            throw new Error('Object must contain at least one property')
+        }
+        const department = await Department.create({ ...object })
+        return department
+    }
 }
 
 export default DepartmentService
