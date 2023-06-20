@@ -28,6 +28,38 @@ class DepartmentService {
         const department = await Department.create({ ...object })
         return department
     }
+
+    update = async (id: number, object: any) => {
+        if (!object && Object.keys(object).length == 0) {
+            throw new Error(
+                'Object to be updated must contain at least one property.'
+            )
+        }
+
+        let existingDepartment = await this.findById(id)
+        if (!existingDepartment) {
+            throw new Error('department_not_found')
+        }
+
+        await Department.update(
+            { ...object },
+            {
+                where: { id },
+            }
+        )
+
+        existingDepartment = await this.findById(id)
+        return existingDepartment
+    }
+
+    deleteByPrimaryKey = async (id: number) => {
+        const existingDepartment = await this.findById(id)
+        if (!existingDepartment) {
+            throw new Error('department_not_found')
+        }
+
+        await existingDepartment.destroy()
+    }
 }
 
 export default DepartmentService
