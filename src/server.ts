@@ -1,6 +1,7 @@
 import express, { Express } from 'express'
 import cors from 'cors'
 import * as routes from './routes'
+import simpleMiddleware from './middlewares/simpleMiddleware'
 
 class Server {
     private app: Express
@@ -14,6 +15,12 @@ class Server {
         this.app.use(cors())
         this.app.use(express.json())
         this.app.use(express.urlencoded({ extended: true }))
+        this.app.use(simpleMiddleware)
+    }
+
+    routes(): Server {
+        this.app.use('/__gtg', routes.gtgRouter)
+        return this
     }
 
     start(port: string) {

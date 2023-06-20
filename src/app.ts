@@ -5,4 +5,4 @@ import createServer from './server'
 const app: Express = express()
 const appPort = environment.APP_PORT
 
-createServer(app).start(appPort)
+createServer(app).routes().start(appPort)
