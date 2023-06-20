@@ -42,4 +42,38 @@ router.post('/', async (req: Request, resp: Response, next: NextFunction) => {
     }
 })
 
+router.put('/:id', async (req: Request, resp: Response, next: NextFunction) => {
+    try {
+        const departmentId = parseInt(req.params.id)
+        const data = await DepartmentService.getInstance().update(
+            departmentId,
+            {
+                ...req.body,
+            }
+        )
+
+        resp.status(200).json(data)
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.delete(
+    '/:id',
+    async (req: Request, resp: Response, next: NextFunction) => {
+        try {
+            const departmentId = parseInt(req.params.id)
+            await DepartmentService.getInstance().deleteByPrimaryKey(
+                departmentId
+            )
+
+            resp.status(200).json({
+                message: `department_successfully_deleted: ${departmentId}`,
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
+)
+
 export default router
