@@ -1,4 +1,4 @@
-import express, { Request, Response, RequestHandler, request } from 'express'
+import express, { Request, Response } from 'express'
 import DepartmentService from '../services/departmentService'
 
 const router = express.Router()
