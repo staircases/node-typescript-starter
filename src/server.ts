@@ -26,7 +26,8 @@ class Server {
     }
 
     routes(): Server {
-        this.app.use('/__gtg', routes.gtgRouter)
+        this.app.use('/__gtg', routes.gtgRoute)
+        this.app.use('/departments', routes.departmentRoute)
         return this
     }
 
