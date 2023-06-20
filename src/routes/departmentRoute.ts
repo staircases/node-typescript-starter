@@ -53,8 +53,8 @@ router.put('/:id', async (req: Request, resp: Response, next: NextFunction) => {
         )
 
         resp.status(200).json(data)
-    } catch (err) {
-        next(err)
+    } catch (e) {
+        next(e)
     }
 })
 
@@ -68,10 +68,10 @@ router.delete(
             )
 
             resp.status(200).json({
-                message: `department_successfully_deleted: ${departmentId}`,
+                message: `Department ${departmentId} successfully deleted.`,
             })
-        } catch (err) {
-            next(err)
+        } catch (e) {
+            next(e)
         }
     }
 )

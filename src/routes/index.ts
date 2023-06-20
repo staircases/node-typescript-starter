@@ -1,3 +1,4 @@
 import gtgRoute from './gtgRoute'
 import departmentRoute from './departmentRoute'
-export { gtgRoute, departmentRoute }
+import productRoute from './productRoute'
+export { gtgRoute, departmentRoute, productRoute }
