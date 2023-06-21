@@ -6,7 +6,7 @@ import { db } from './database/models'
 ;(async () => {
     await SequelizeConnection.connect()
     db.sequelize.sync({
-        force: true,
+        force: false,
     })
 })()
 

@@ -16,24 +16,24 @@ class Employee extends Model implements EmployeeAttributes {
             {
                 empId: {
                     field: 'EmpID',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(10),
                     primaryKey: true,
                 },
-                firstname: {
+                firstName: {
                     field: 'EFirstName',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(20),
                 },
-                lastname: {
+                lastName: {
                     field: 'ELastName',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(20),
                 },
                 address: {
                     field: 'Address',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(30),
                 },
                 age: {
                     field: 'Age',
-                    type: DataTypes.INTEGER,
+                    type: DataTypes.INTEGER({ length: 11 }),
                 },
                 joinDate: {
                     field: 'D_Join',
@@ -41,7 +41,7 @@ class Employee extends Model implements EmployeeAttributes {
                 },
                 department: {
                     field: 'Dept',
-                    type: DataTypes.DATE,
+                    type: DataTypes.STRING(20),
                 },
                 salary: {
                     field: 'Salary',

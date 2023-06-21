@@ -11,12 +11,12 @@ class Product extends Model implements ProductAttributes {
             {
                 prodId: {
                     field: 'ProdID',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(7),
                     primaryKey: true,
                 },
                 prodName: {
                     field: 'ProdName',
-                    type: DataTypes.STRING,
+                    type: DataTypes.STRING(30),
                 },
                 baseCost: {
                     field: 'Base_Cost',
@@ -25,7 +25,7 @@ class Product extends Model implements ProductAttributes {
             },
             {
                 sequelize,
-                tableName: 'product',
+                tableName: 'Product',
             }
         )
     }

@@ -29,6 +29,7 @@ class Server {
         this.app.use('/__gtg', routes.gtgRoute)
         this.app.use('/departments', routes.departmentRoute)
         this.app.use('/products', routes.productRoute)
+        this.app.use('/employees', routes.employeeRoute)
         return this
     }
 
