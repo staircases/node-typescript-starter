@@ -22,7 +22,7 @@ class DepartmentService {
     }
 
     save = async (object: any) => {
-        if (!object && Object.keys(object).length == 0) {
+        if (!object || Object.keys(object).length == 0) {
             throw new Error('Object must contain at least one property')
         }
         const department = await db.Department.create({ ...object })
