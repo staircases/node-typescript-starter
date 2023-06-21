@@ -10,6 +10,8 @@ class Employee extends Model implements EmployeeAttributes {
     public joinDate!: Date
     public department!: string
     public salary!: number
+    public readonly createdAt!: Date
+    public readonly updated!: Date
 
     static initModel(sequelize: Sequelize): void {
         Employee.init(

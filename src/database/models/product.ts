@@ -2,9 +2,11 @@ import { Model, Sequelize, DataTypes } from 'sequelize'
 import { ProductAttributes } from '../attributes'
 
 class Product extends Model implements ProductAttributes {
-    prodId!: string
-    prodName!: string
-    baseCost!: number
+    public prodId!: string
+    public prodName!: string
+    public baseCost!: number
+    public readonly createdAt!: Date
+    public readonly updated!: Date
 
     static initModel(sequelize: Sequelize): void {
         Product.init(
