@@ -30,7 +30,7 @@ class ProductService {
     }
 
     update = async (id: string, object: any) => {
-        if (!object && Object.keys(object).length == 0) {
+        if (!object || Object.keys(object).length == 0) {
             throw new Error(
                 'Object to be updated must contain at least one property.'
             )
@@ -41,7 +41,7 @@ class ProductService {
             throw new Error('Product not found')
         }
 
-        await Product.update({ ...object }, { where: { id } })
+        await Product.update({ ...object }, { where: { prodId: id } })
 
         existingProduct = await this.findById(id)
         return existingProduct

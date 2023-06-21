@@ -30,7 +30,7 @@ class EmployeeService {
     }
 
     update = async (id: string, object: any) => {
-        if (!object && Object.keys(object).length == 0) {
+        if (!object || Object.keys(object).length == 0) {
             throw new Error('Object must contain at least one property')
         }
 
@@ -39,7 +39,7 @@ class EmployeeService {
             throw new Error('Employee not found')
         }
 
-        await Employee.update({ ...object }, { where: { id } })
+        await Employee.update({ ...object }, { where: { empId: id } })
         existingEmployee = await this.findById(id)
         return existingEmployee
     }

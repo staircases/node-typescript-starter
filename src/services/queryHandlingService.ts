@@ -30,7 +30,7 @@ class QueryHandlingService {
     }
 
     update = async (id: string, object: any) => {
-        if (!object && Object.keys(object).length == 0) {
+        if (!object || Object.keys(object).length == 0) {
             throw new Error(
                 'Object to be updated must contain at least one property.'
             )
@@ -41,7 +41,7 @@ class QueryHandlingService {
             throw new Error('Query not found')
         }
 
-        await QueryHandling.update({ ...object }, { where: { id } })
+        await QueryHandling.update({ ...object }, { where: { qid: id } })
 
         existingQuery = await this.findById(id)
         return existingQuery
