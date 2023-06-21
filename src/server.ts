@@ -30,6 +30,7 @@ class Server {
         this.app.use('/departments', routes.departmentRoute)
         this.app.use('/products', routes.productRoute)
         this.app.use('/employees', routes.employeeRoute)
+        this.app.use('/queries', routes.queryHandlingRoute)
         return this
     }
 
